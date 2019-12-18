@@ -21,5 +21,15 @@ Route::prefix('v1')
         Route::post('socials/{social_type}/authorizations', 'Core\AuthorizationsController@socialStore')
             ->where('social_type', 'weixin')
             ->name('socials.authorizations.store');
+        // 登录
+        Route::post('authorizations', 'Core\AuthorizationsController@store')
+            ->name('api.authorizations.store');
+
+        // 刷新token
+        Route::put('authorizations/current', 'Core\AuthorizationsController@update')
+            ->name('authorizations.update');
+        // 删除token
+        Route::delete('authorizations/current', 'Core\AuthorizationsController@destroy')
+            ->name('authorizations.destroy');
     });
 });
