@@ -8,6 +8,8 @@ Route::prefix('v1')
 ->group(function () {
     Route::middleware('throttle:' . config('api.rate_limits.sign'))
     ->group(function () {
+        Route::post('captchas', 'Core\CaptchasController@store')
+        ->name('captchas.store');
         // 短信验证码
         Route::post('verificationCodes', 'Core\VerificationCodesController@store')
         ->name('verificationCodes.store');
