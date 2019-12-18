@@ -16,5 +16,10 @@ Route::prefix('v1')
         // 用户注册
         Route::post('users', 'Core\UsersController@store')
         ->name('users.store');
+
+        // 第三方登录
+        Route::post('socials/{social_type}/authorizations', 'Core\AuthorizationsController@socialStore')
+            ->where('social_type', 'weixin')
+            ->name('socials.authorizations.store');
     });
 });
