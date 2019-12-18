@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Api\Core;
 
-use App\Http\Requests\ApiRequest;
+use App\Http\Requests\Api\FormRequest;
 
-class VerificationCodeRequest extends ApiRequest
+class VerificationCodeRequest extends FormRequest
 {
     public function rules()
     {
