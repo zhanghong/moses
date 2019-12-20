@@ -1,8 +1,10 @@
 <?php
 
 Route::get('/', 'PagesController@root')->name('root');
+Route::get('token', 'PagesController@token');
 
 // 用户身份验证相关的路由
+Route::get('login/wechat', 'Auth\LoginController@wechatLogin')->name('wechat.login');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');

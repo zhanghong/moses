@@ -36,4 +36,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function wechatLogin()
+    {
+        $wechat = app('wechat.official_account');
+        $result = $wechat->qrcode->temporary('foo', 600);
+        $qrcodeUrl = $wechat->qrcode->url($result['ticket']);
+
+        return view('auth.wechat_login', compact('qrcodeUrl'));
+    }
 }
