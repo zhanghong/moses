@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Core;
 
 use App\Models\User;
 use Illuminate\Support\Arr;
-use Illuminate\Auth\AuthenticationException;
 use App\Http\Controllers\Api\Controller;
+use Illuminate\Auth\AuthenticationException;
 use App\Http\Requests\Api\Core\AuthorizationRequest;
 use App\Http\Requests\Api\Core\SocialAuthorizationRequest;
 
@@ -77,15 +77,6 @@ class AuthorizationsController extends Controller
         return $this->respondWithToken($token)->setStatusCode(201);
     }
 
-    protected function respondWithToken($token)
-    {
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
-        ]);
-    }
-
     public function update()
     {
         $token = auth('api')->refresh();
@@ -96,5 +87,14 @@ class AuthorizationsController extends Controller
     {
         auth('api')->logout();
         return response(null, 204);
+    }
+
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ]);
     }
 }
