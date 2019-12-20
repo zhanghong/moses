@@ -12,4 +12,6 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('admin.home');
 
+    // 用户管理
+    $router->get('core/users', 'Core\UsersController@index');
 });
