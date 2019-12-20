@@ -21,3 +21,10 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
+# 用户点击登录按钮时请求的地址
+Route::get('/auth/oauth/wechat', 'Auth\OauthController@wechat');
+# 微信接口回调地址
+Route::get('/auth/callback/wechat', 'Auth\CallbackController@wechat');
+
+Route::any('/wechat', 'Wechat\IndexController@serve');
