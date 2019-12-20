@@ -37,15 +37,16 @@ class CallbackController extends Controller
             $user = User::where('weixin_openid', $oauthUser->getId())->first();
         }
 
-        if ($user) {
-            Auth::login($user);
-            // dd(\Auth::user());
-            return redirect('/');
-        } else {
-            dd([
-                'unionid' => $unionid,
-                'openid' => $oauthUser->getId(),
+	if (!$user) {
+            $user = User::create([
+                    'name' => $oauthUser->getNickname(),
+                    'avatar' => $oauthUser->getAvatar(),
+                    'weixin_openid' => $oauthUser->getId(),
+                    'weixin_unionid' => $unionid,
             ]);
         }
+        Auth::login($user);
+        // dd(\Auth::user());
+        return redirect('/');
     }
 }
