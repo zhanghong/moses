@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\Core;
 
-use App\Models\User;
+use App\Models\Core\User;
 use Illuminate\Support\Arr;
 use App\Http\Controllers\Api\Controller;
 use Illuminate\Auth\AuthenticationException;

@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Core;
 
-use App\Models\User;
+use App\Models\Core\User;
 use Illuminate\Console\Command;
 
 class GenerateJwtToken extends Command
