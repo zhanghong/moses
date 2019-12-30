@@ -250,6 +250,18 @@ return [
      * 扩展设置.
      */
     'extensions' => [
-
+        'configx' => [
+            // Set to `false` if you want to disable this extension
+            'enable' => true,
+            'tabs' => [
+                'base' => '基本设置',
+                'shop' => '店铺设置',
+                'uplaod' => '上传设置',
+                'image' => '上传图片' // if tab name is empty, get from trans : trans('admin.configx.tabs.image'); tab名称留空则从翻译中获取
+            ],
+            // Whether check group permissions.
+            //if (!Admin::user()->can('confix.tab.base')) {/*hide base tab*/ } .
+            'check_permission' => false
+        ],
     ],
 ];
