@@ -14,8 +14,9 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'api',
+        // 'guard' => 'web',
+        // 'passwords' => 'users',
     ],
 
     /*
@@ -68,7 +69,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Core\User::class,
+            // 'model' => App\Models\Core\User::class,
+            'model' => Tuandm\Laravue\User::class,
         ],
 
         // 'users' => [
